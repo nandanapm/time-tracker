@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_application_1/common_widgets/custom_raised_button.dart';
 
 class SignInButton extends CustomRaisedButton {
   SignInButton({
     required String text,
     required Color color,
-   Color? textColor,
+    required Color textColor,
     required VoidCallback onPressed,
   }) : super(
           child: Text(
@@ -15,4 +17,6 @@ class SignInButton extends CustomRaisedButton {
           color: color,
           onPressed: onPressed,
         );
+
+  get white => null;
 }
