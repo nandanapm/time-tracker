@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/common_widgets/custom_raised_button.dart';
 
+// ignore: must_be_immutable
 class SignInButton extends CustomRaisedButton {
   SignInButton({
     required String text,
