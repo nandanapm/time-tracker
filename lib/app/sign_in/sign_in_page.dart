@@ -1,14 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:flutter_application_1/app/landing_page.dart';
 import 'package:flutter_application_1/app/sign_in/sign_in%20button.dart';
 import 'package:flutter_application_1/social_sign_in_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class SignInPage extends StatelessWidget {
-  SignInPage({required this.onSignIn})
+  SignInPage({this.onSignIn})
   // ignore: empty_constructor_bodies
-  final Function(FirebaseUser) onSignIn;
+  final Function(User) onSignIn;
   Future<void> _signInAnonymously() async {
+    await Firebase.initializeApp();
     try {
       final authResult = await FirebaseAuth.instance.signInAnonymously();
     onSignIn(authResult.user);

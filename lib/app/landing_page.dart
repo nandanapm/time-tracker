@@ -2,19 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app/sign_in/sign_in_page.dart';
 
 class LandingPage extends StatefulWidget {
-  const LandingPage({Key? key}) : super(key: key);
+  const LandingPage({key}) : super(key: key);
 
   @override
   _LandingPageState createState() => _LandingPageState();
 }
 
-class _LandingPageState extends State<LandingPage> {
+abstract class _LandingPageState extends State<LandingPage> {
   // ignore: unused_field
-  late FirebaseUser _user;
+  FirebaseUser _user;
 
-  void _updateUser(FirebaseUser user) {
+  // ignore: non_constant_identifier_names
+  void _updateUser(User) {
      setState(() {
-       _user = user;
+       _user = _user;
      });
   }
 
@@ -24,6 +25,7 @@ class _LandingPageState extends State<LandingPage> {
       onSignIn: _updateUser,
     );
   }
+  // ignore: non_constant_identifier_names
   return Container(); //temporary placeholder for Homepage
 }
 
