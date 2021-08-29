@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:flutter_application_1/app/landing_page.dart';
@@ -7,14 +6,17 @@ import 'package:flutter_application_1/social_sign_in_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class SignInPage extends StatelessWidget {
-  SignInPage({this.onSignIn})
-  // ignore: empty_constructor_bodies
-  final Function(User) onSignIn;
+  //callback for landing Page
+  SignInPage({@required this.onSignIn});
+  final Function(FirebaseUser) onSignIn;
+
+// signin Anonymously
   Future<void> _signInAnonymously() async {
-    await Firebase.initializeApp();
+    //await Firebase.initializeApp();
     try {
       final authResult = await FirebaseAuth.instance.signInAnonymously();
-    onSignIn(authResult.user);
+      onSignIn(authResult.user);
+      //print('${authResult.user!.uid}');
     } catch (e) {
       print(e.toString());
     }

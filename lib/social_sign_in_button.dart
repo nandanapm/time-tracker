@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_application_1/common_widgets/custom_raised_button.dart';
 
-// ignore: must_be_immutable
 class SocialSignInButton extends CustomRaisedButton {
   SocialSignInButton({
-    String assetName,
-    text,
+    @required String assetName,
+    @required String text,
     Color color,
     Color textColor,
     VoidCallback onPressed,

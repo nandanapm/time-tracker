@@ -1,33 +1,42 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app/sign_in/sign_in_page.dart';
 
 class LandingPage extends StatefulWidget {
-  const LandingPage({key}) : super(key: key);
-
   @override
   _LandingPageState createState() => _LandingPageState();
 }
 
-abstract class _LandingPageState extends State<LandingPage> {
-  // ignore: unused_field
+class _LandingPageState extends State<LandingPage> {
   FirebaseUser _user;
 
-  // ignore: non_constant_identifier_names
-  void _updateUser(User) {
-     setState(() {
-       _user = _user;
-     });
+  @override
+  void initState() {
+    super.initState();
+    _checkCurrentUser();
+  }
+
+  Future<void> _checkCurrentUser() async {
+    FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    _updateUser(user);
+  }
+
+  void _updateUser(FirebaseUser user) {
+    // print('Userid: ${user.uid}');
+    setState(() {
+      _user = user;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return SignInPage(
-      onSignIn: _updateUser,
+    if (_user == null) {
+      return SignInPage(
+        onSignIn: _updateUser,
+      );
+    }
+    return HomePage(
+      onSignOut: () => _updateUser(null),
     );
   }
-  // ignore: non_constant_identifier_names
-  return Container(); //temporary placeholder for Homepage
-}
-
-class FirebaseUser {
 }

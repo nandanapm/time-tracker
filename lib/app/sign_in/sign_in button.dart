@@ -1,12 +1,9 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/common_widgets/custom_raised_button.dart';
 
-// ignore: must_be_immutable
 class SignInButton extends CustomRaisedButton {
   SignInButton({
-    String text,
+    @required String text,
     Color color,
     Color textColor,
     VoidCallback onPressed,
@@ -18,6 +15,4 @@ class SignInButton extends CustomRaisedButton {
           color: color,
           onPressed: onPressed,
         );
-
-  get white => null;
 }
